@@ -1,0 +1,155 @@
+using System;
+
+ namespace Camel
+ {
+     class Program
+     {
+         static void Main(string[] args)
+         {
+             // Introductory message
+             Console.WriteLine("Welcome to Camel! Travel to the nearest City to get to saftey from the sandstorm that is coming!");
+           Random rnd = new Random();
+           int sandStorm = 0;
+           int sMiles = 0; 
+           int userMiles = 0;
+           int water = 50;
+           int energy = 20;
+
+             // Main game loop
+             bool done = false;
+             while (!done)
+             {
+               
+               if (userMiles < sandStorm){
+
+                  Console.WriteLine("The sandstorm caught you, you lose");
+                    
+                  break;
+                    
+                } else {
+               
+               if (energy <= 0){
+
+                 Console.WriteLine("You have no energy you need to rest, you can;t move this turn");
+                 energy += 20;
+                 
+               } else {
+                 // Print commands
+                 Console.WriteLine();
+                 Console.WriteLine("A. Drink from your canteen.");
+                 Console.WriteLine("B. Ahead moderate speed.");
+                 Console.WriteLine("C. Ahead full speed.");
+                 Console.WriteLine("D. Stop and rest.");
+                 Console.WriteLine("E. Status check.");
+                 Console.WriteLine("Q. Quit.");
+
+                 // Get user command
+                 Console.Write("What is your command? ");
+                 string userCommand = Console.ReadLine();
+                 Console.WriteLine();
+               
+                 // Process user command
+                 if (userCommand == "a")
+                 {
+                     Console.WriteLine("You drank from the canteen.");
+                   if (userMiles == 0){
+
+                     Console.WriteLine("You have not moved yet, make a move to start the game otherwise the sandstorm will catch you");
+                     
+                   } else{
+                   
+                   
+
+                      for(int j = 0; j < 1; j++)
+                      {
+                          Console.WriteLine(sMiles += rnd.Next(1, 3));
+                      }
+
+                   Console.WriteLine("You used 5 water, total water is: " + (water -= 5));
+                   
+                   Console.WriteLine("you gained 5 energy, total energy is: " + (energy + 5));
+                   
+                    Console.WriteLine("The Sandstorm has moved " + (sandStorm += sMiles) + " miles ");
+                   
+                   Console.WriteLine("You have moved a total of " + userMiles + " miles");
+                   
+                 }
+                 }
+
+               
+             
+                  if (userCommand == "b")
+                  {
+                    Console.WriteLine("You moved ahead at a moderate speed");
+                    
+                    for(int j = 0; j < 1; j++)
+                      {
+                          Console.WriteLine(sMiles += rnd.Next(1, 3));
+                      }
+
+                    userMiles += 10;
+                    
+                    energy -= 5;
+                      
+                      Console.WriteLine("The Sandstorm has moved " + (sandStorm += sMiles) + " miles ");
+
+                     Console.WriteLine("You moved  10 miles, totla miles you have traveled is: " + userMiles + " and used 5 energy, total energy is " + energy);
+                  }
+
+               
+             
+                  if (userCommand == "c")
+                  {
+                    Console.WriteLine("You moved ahead at a full speed");
+                    for(int j = 0; j < 1; j++)
+                      {
+                          Console.WriteLine(sMiles += rnd.Next(1, 3));
+                      }
+
+                    userMiles += 15;
+                    Console.WriteLine(energy -= 10);
+                      
+                      Console.WriteLine("The Sandstorm has moved " + (sandStorm += sMiles) + " miles ");
+                    
+                     Console.WriteLine("You moved  15 miles, total miles you have traveled is: " + userMiles + " and used 10 energy, total energy is " + energy);
+                  }
+
+               
+             
+                  if (userCommand == "d")
+                  {
+                    Console.WriteLine("You stopped and rested");
+                    
+                    for(int j = 0; j < 1; j++)
+                      {
+                          Console.WriteLine(sMiles += rnd.Next(1, 5));
+                      }
+
+                    Console.WriteLine("you gained 3 energy, total energy is: " + (energy + 3));
+                      
+                      Console.WriteLine("The Sandstorm has moved " + (sandStorm += sMiles) + " miles ");
+
+                     Console.WriteLine("You have moved " + userMiles);
+                 }
+
+               
+                  if (userCommand == "e")
+                  {
+                    Console.WriteLine("Status: The sand storm has traveled " + sandStorm + " miles. You have traveled " + userMiles + " miles.");
+
+                    Console.WriteLine("Your energy is " + energy + " | Your water is " + water);
+                    
+                 }
+
+               
+                  if (userCommand == "q")
+                  {
+                    Console.WriteLine("goodbye");
+                   break;
+                  }
+               }
+                 }
+              }
+         }
+     }
+ }
